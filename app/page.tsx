@@ -14,18 +14,6 @@ const CELL_HEIGHT = 250;
 export default function Planner() {
   const [days] = useState(() => Array.from({ length: DAYS_COUNT }, (_, i) => addDays(new Date(), i)));
 
-  // Заглушка постов и тизеров (потом подключишь NocoDB)
-  const [posts, setPosts] = useState<any[]>([]);
-  const [teasers, setTeasers] = useState<any[]>([]);
-
-  useEffect(() => {
-    setTeasers(Array.from({ length: 12 }, (_, i) => ({
-      id: `teaser-${i}`,
-      title: `Тизер ${i + 1}`,
-      preview: '🖼️'
-    })));
-  }, []);
-
   return (
     <div className="min-h-screen bg-zinc-950 p-8">
       <h1 className="text-4xl font-bold mb-10 text-center text-white">
@@ -59,7 +47,8 @@ export default function Planner() {
               {days.map((_, dIdx) => (
                 <div
                   key={`${dIdx}-${tIdx}`}
-                  className="bg-zinc-900 border border-zinc-700 h-[${CELL_HEIGHT}px] flex items-center justify-center cursor-pointer hover:bg-zinc-800 transition-colors relative group"
+                  className="bg-zinc-900 border border-zinc-700 flex items-center justify-center cursor-pointer hover:bg-zinc-800 transition-colors relative group"
+                  style={{ width: `${CELL_WIDTH}px`, height: `${CELL_HEIGHT}px` }}
                 >
                   <div className="text-center text-zinc-500 opacity-70 group-hover:opacity-100">
                     <Plus size={32} className="mx-auto mb-2" />
@@ -72,16 +61,16 @@ export default function Planner() {
         </div>
       </div>
 
-      {/* Галерея тизеров справа (пока заглушка) */}
+      {/* Галерея тизеров справа */}
       <div className="mt-8 lg:mt-0 lg:fixed lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:w-80 bg-zinc-900 rounded-2xl p-6 overflow-y-auto max-h-[80vh]">
         <h2 className="font-bold text-xl mb-6">Галерея тизеров</h2>
         <div className="grid grid-cols-2 gap-4">
-          {teasers.map(t => (
+          {Array.from({ length: 12 }).map((_, i) => (
             <div
-              key={t.id}
+              key={i}
               className="aspect-square bg-zinc-800 rounded-xl flex items-center justify-center text-5xl cursor-grab active:cursor-grabbing hover:scale-105 transition-all"
             >
-              {t.preview}
+              🖼️
             </div>
           ))}
         </div>
