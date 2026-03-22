@@ -8,6 +8,7 @@ import { Plus } from 'lucide-react';
 const TIMES = ['09:00', '12:00', '17:00', '20:00', '21:00'];
 const DAYS_COUNT = 7;
 
+const TIME_COLUMN_WIDTH = 60;
 const CELL_WIDTH = 150;
 const CELL_HEIGHT = 250;
 
@@ -21,15 +22,21 @@ export default function Planner() {
       </h1>
 
       <div className="overflow-x-auto">
-        <div className="inline-grid" style={{ gridTemplateColumns: `repeat(${DAYS_COUNT + 1}, ${CELL_WIDTH}px)` }}>
-          {/* Пустая ячейка в левом верхнем углу */}
-          <div className="bg-zinc-900 border border-zinc-700 h-[60px] flex items-center justify-center text-sm text-zinc-400">
-            Время / Дата
-          </div>
+        <div 
+          className="inline-grid"
+          style={{
+            gridTemplateColumns: `${TIME_COLUMN_WIDTH}px repeat(${DAYS_COUNT}, ${CELL_WIDTH}px)`,
+          }}
+        >
+          {/* Пустая ячейка в левом верхнем углу — теперь без текста */}
+          <div className="bg-zinc-900 border border-zinc-700 h-[60px]" />
 
           {/* Даты сверху */}
           {days.map((day, i) => (
-            <div key={i} className="bg-zinc-900 border border-zinc-700 h-[60px] flex items-center justify-center text-sm text-zinc-400">
+            <div 
+              key={i} 
+              className="bg-zinc-900 border border-zinc-700 h-[60px] flex items-center justify-center text-sm text-zinc-400"
+            >
               {format(day, 'dd.MM', { locale: ru })}
               {i === 0 && <span className="ml-1 text-emerald-400 text-xs">(Сегодня)</span>}
             </div>
@@ -38,7 +45,7 @@ export default function Planner() {
           {/* Строки по времени */}
           {TIMES.map((time, tIdx) => (
             <>
-              {/* Время слева */}
+              {/* Время слева — 60px */}
               <div className="bg-zinc-900 border border-zinc-700 h-[${CELL_HEIGHT}px] flex items-center justify-center text-sm text-zinc-400">
                 {time}
               </div>
