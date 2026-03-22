@@ -7,8 +7,8 @@ import { Plus, Edit2 } from 'lucide-react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
-const TIMES = ['09:00', '12:00', '17:00', '20:00', '21:00'];
-const DAYS_COUNT = 14; // можно менять
+const TIMES = ['09:00', '12:00', '17:00', '20:00', '23:00'];
+const DAYS_COUNT = 7; // можно менять
 
 export default function Planner() {
   const [days] = useState(() => Array.from({ length: DAYS_COUNT }, (_, i) => addDays(new Date(), i)));
