@@ -5,7 +5,9 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="ldWy3GLgrzjcHt1BTVJn-1" parent="1" style="swimlane;startSize=30;align=center;verticalAlign=middle;" value="Загрузчик галерей" vertex="1">
-          <mxGeometry height="200" width="200" x="330" y="230" as="geometry" />
+          <mxGeometry height="200" width="200" x="330" y="230" as="geometry">
+            <mxRectangle height="30" width="140" x="330" y="230" as="alternateBounds" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="ldWy3GLgrzjcHt1BTVJn-2" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" value="Машинное&lt;br&gt;зрение" vertex="1">
           <mxGeometry height="80" width="120" x="365" y="70" as="geometry" />
